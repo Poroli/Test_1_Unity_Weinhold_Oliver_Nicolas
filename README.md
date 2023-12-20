@@ -1,4 +1,4 @@
-# Tets_1_Unity_Weinhold_Oliver_Nicolas
+# Test_1_Unity_Weinhold_Oliver_Nicolas
 ![Screenshot (3)](https://github.com/Poroli/Tets_1_Unity_Weinhold_Oliver_Nicolas/assets/95571352/cf17cde7-1488-489a-b272-84d7ac47baea)
 Hier sieht man die Enemys mit ihren zufällig zugeordneten Type
 
