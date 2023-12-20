@@ -23,7 +23,7 @@ public class SceneObjectManager_Refaktorisiert : MonoBehaviour
     private void GetAllObjects()
     {
         enemiesArray = GameObject.FindGameObjectsWithTag("Enemy");
-        itemsArray = GameObject.FindGameObjectsWithTag("Items");
+        itemsArray = GameObject.FindGameObjectsWithTag("Item");
     }
 
     private void RandomEnemyTypeAssing()
