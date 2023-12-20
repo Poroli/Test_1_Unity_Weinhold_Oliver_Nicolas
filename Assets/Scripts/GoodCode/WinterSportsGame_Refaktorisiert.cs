@@ -1,7 +1,5 @@
 using UnityEngine;
-using System;
 using System.Collections.Generic;
-using UnityEngine.UI;
 
 public class WinterSportsGame_Refaktorisiert : MonoBehaviour
 {
@@ -16,10 +14,10 @@ public class WinterSportsGame_Refaktorisiert : MonoBehaviour
     - Nach Abschluss ALLER Refaktorisierungen laden Sie oli90martin@web.de als Collaborator zu Ihrer Git-Repository ein.
     */
 
-    public List<string> AchievementsListe = new(); 
-    public GameObject SkiGameObject; 
-    public int PlayerStamina = 100; 
-    public float SkiingSpeed = 10f;
+    [SerializeField] private List<string> AchievementsListe = new(); // alle publics wurden zu [SerializeFiels] privates geändert da keine notwendigkeit von publics ersichtlich
+    [SerializeField] private GameObject SkiGameObject; // alle publics wurden zu [SerializeFiels] privates geändert da keine notwendigkeit von publics ersichtlich
+    [SerializeField] private int PlayerStamina = 100; // alle publics wurden zu [SerializeFiels] privates geändert da keine notwendigkeit von publics ersichtlich
+    [SerializeField] private float SkiingSpeed = 10f;// alle publics wurden zu [SerializeFiels] privates geändert da keine notwendigkeit von publics ersichtlich
     
     private bool isSkiing; 
     
@@ -53,7 +51,7 @@ public class WinterSportsGame_Refaktorisiert : MonoBehaviour
         } 
     }
 
-    // fpr LoseStamina kein offensichtlicher Grund im Code warum public
+    // für LoseStamina kein offensichtlicher Grund im Code warum public
     public void LoseStamina(int losingAmount) 
     { 
         // Stamina wird entsprechend loosingAmount abgezogen
@@ -66,7 +64,7 @@ public class WinterSportsGame_Refaktorisiert : MonoBehaviour
         } 
     }
     
-    // AddAchievement derzeit nicht offensichtlich im Code gebraucht -> kann gelöscht werden
+    // AddAchievement derzeit nicht offensichtlich im Code gebraucht -> kann gelöscht werden und warum public
     public void AddAchievement(string achievement) 
     { 
         if (!AchievementsListe.Contains(achievement)) 
@@ -75,13 +73,13 @@ public class WinterSportsGame_Refaktorisiert : MonoBehaviour
         } 
     }
 
-    // StartSkiing derzeit nicht offensichtlich im Code gebraucht -> kann gelöscht werden
+    // StartSkiing derzeit nicht offensichtlich im Code gebraucht -> kann gelöscht werden und warum public
     public void StartSkiing() 
     { 
         isSkiing = true; 
     }
     
-    // StopSkiing derzeit nicht offensichtlich im Code gebraucht -> kann gelöscht werden
+    // StopSkiing derzeit nicht offensichtlich im Code gebraucht -> kann gelöscht werden und warum public
     public void StopSkiing() 
     { 
         isSkiing = false; 

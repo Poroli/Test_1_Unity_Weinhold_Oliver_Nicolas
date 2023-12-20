@@ -14,8 +14,53 @@ public class NumberFilter_Refaktorisiert : MonoBehaviour
    - Nach Abschluss aller Refaktorisierungen laden Sie oli90martin@web.de als Collaborator zu Ihrer Git-Repository ein.
    */
 
-    public int[] numbers = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
-    public int[] evenNumbers;
-    public int[] oddNumbers;
+    [SerializeField] private int[] numbersArray = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 }; // alle publics wurden zu [SerializeField] private geändert da kein Grund für public ersichtlich
+    [SerializeField] private int[] evenNumbersArray; // alle publics wurden zu [SerializeField] private geändert da kein Grund für public ersichtlich
+    [SerializeField] private int[] oddNumbersArray; // alle publics wurden zu [SerializeField] private geändert da kein Grund für public ersichtlich
 
+    private void SortNumbers()
+    {
+        // neue tmp Listen um Zahlen schnell und einfach zuordnen zu können
+        List<int> tmpEvenInts = new();
+        List<int> tmpOddInts = new();
+        
+        for (int i = 0; i < numbersArray.Length; i++)
+        {
+            // überprüfung ob Zahl gerade ist um sie temporärer Liste hinzuzufügen
+            if (numbersArray[i] % 2 == 0)
+            {
+                tmpEvenInts.Add(numbersArray[i]);
+                continue;
+            }
+            tmpOddInts.Add(numbersArray[i]);
+        }
+
+        // setzen der Arrays auf die tmp Listen Inhalte
+        evenNumbersArray = tmpEvenInts.ToArray();
+        oddNumbersArray = tmpOddInts.ToArray();
+    }
+
+    public void PrintAllEvenNumbers()
+    {
+        // funktion zum einordnen/ Sortieren der Zahlen nach Gerade/ Ungerade
+        SortNumbers();
+
+        // ausgeben aller Zahlen aus entsprechendem Array in Konsole
+        foreach (int evenNumber in evenNumbersArray)
+        {
+            print(evenNumber);
+        }
+    }
+
+    public void PrintAllOddNumbers()
+    {
+        // funktion zum einordnen/ Sortieren der Zahlen nach Gerade/ Ungerade
+        SortNumbers();
+
+        // ausgeben aller Zahlen aus entsprechendem Array in Konsole
+        foreach (int oddNumber in oddNumbersArray)
+        {
+            print(oddNumber);
+        }
+    }
 }

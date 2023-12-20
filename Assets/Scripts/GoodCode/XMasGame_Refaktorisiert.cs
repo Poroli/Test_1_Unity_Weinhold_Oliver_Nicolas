@@ -23,12 +23,12 @@ public class XMasGame_Refaktorisiert : MonoBehaviour
   - Nach Abschluss ALLER Refaktorisierungen laden Sie oli90martin@web.de als Collaborator zu Ihrer Git-Repository ein.
    */
   
-  public int PresentsAmount = 4; // derzeit nicht gebraucht -> kann gelöscht werden
-  public string Winning; // derzeit nicht gebraucht -> kann gelöscht werden
-  public int SantasHealthPoints = 100; 
-  public List<string> InventoryGiftsList = new List<string>();
-  public GameObject SantaGameObject; // sehe keine Verwendung hier im Code
-  public GameObject SleightGameObject; 
+  [SerializeField] private int PresentsAmount = 4; // derzeit nicht gebraucht -> kann gelöscht werdenalle publics wurden zu [Serializefield] privates geändert da keine verwendung duch andere Scripts ersichtlich
+  [SerializeField] private string Winning; // derzeit nicht gebraucht -> kann gelöscht werdenalle publics wurden zu [Serializefield] privates geändert da keine verwendung duch andere Scripts ersichtlich
+  [SerializeField] private int SantasHealthPoints = 100; // alle publics wurden zu [Serializefield] privates geändert da keine verwendung duch andere Scripts ersichtlich
+  [SerializeField] private List<string> InventoryGiftsList = new List<string>(); // alle publics wurden zu [Serializefield] privates geändert da keine verwendung duch andere Scripts ersichtlich
+  [SerializeField] private GameObject SantaGameObject; // sehe keine Verwendung hier im Code -> kann gelöscht werdenalle publics wurden zu [Serializefield] privates geändert da keine verwendung duch andere Scripts ersichtlich
+  [SerializeField] private GameObject SleightGameObject; // alle publics wurden zu [Serializefield] privates geändert da keine verwendung duch andere Scripts ersichtlich
   
   private bool isFlying; // evtl. überflüssig da Start-/ StopFlying nicht offensichtlich im Code gebraucht
   private float flyingSpeed = 10f; 

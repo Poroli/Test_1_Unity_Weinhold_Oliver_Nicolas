@@ -13,39 +13,23 @@ public class ItemCollector_Refaktorisiert : MonoBehaviour
     - Nach Abschluss aller Refaktorisierungen laden Sie oli90martin@web.de als Collaborator zu Ihrer Git-Repository ein.
     */
 
-                        public GameObject item1;
-                        public GameObject item2;
-                        public GameObject item3;
-                        public GameObject item4;
-                        public GameObject item5;
-           private List<GameObject> collectedItems = new List<GameObject>();
+    [SerializeField] private GameObject[] items;
+    private List<GameObject> collectedItems = new List<GameObject>();
 
-            void Update()
-            {
-                CollectItems();
-            }
+    void Update()
+    {
+        CollectItems();
+    }
 
     void CollectItems()
     {
-        if (item1 != null)
+        // durchgehen durch alle Elemente in items und hinzufügen der Liste
+        foreach (GameObject item in items)
         {
-            collectedItems.Add(item1);
-        }
-        if (item2 != null)
-        {
-            collectedItems.Add(item2);
-        }
-        if (item3 != null)
-        {
-            collectedItems.Add(item3);
-        }
-        if (item4 != null)
-        {
-            collectedItems.Add(item4);
-        }
-        if (item5 != null)
-        {
-            collectedItems.Add(item5);
+            if (item != null)
+            {
+                collectedItems.Add(item);
+            }
         }
     }
 }
