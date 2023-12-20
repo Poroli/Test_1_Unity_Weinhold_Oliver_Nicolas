@@ -23,7 +23,7 @@ public class XMasGame_Refaktorisiert : MonoBehaviour
   - Nach Abschluss ALLER Refaktorisierungen laden Sie oli90martin@web.de als Collaborator zu Ihrer Git-Repository ein.
    */
   
-  public int presents = 4; // derzeit nicht gebraucht -> kann gelöscht werden
+  public int PresentsAmount = 4; // derzeit nicht gebraucht -> kann gelöscht werden
   public string Winning; // derzeit nicht gebraucht -> kann gelöscht werden
   public int SantasHealthPoints = 100; 
   public List<string> InventoryGiftsList = new List<string>();
@@ -32,26 +32,6 @@ public class XMasGame_Refaktorisiert : MonoBehaviour
   
   private bool isFlying; // evtl. überflüssig da Start-/ StopFlying nicht offensichtlich im Code gebraucht
   private float flyingSpeed = 10f; 
-  
-  void Start() 
-  { 
-    Debug.Log("Weihnachtsabenteuer beginnt!");
-    SantaGameObject = GameObject.Find("Santa"); // evtl. überflüssig da SantaGameObject anscheinend nicht gebraucht wird
-    SantasHealthPoints = 80; // !mir ist unklar, warum die Healthpoints überschrieben werden!
-  }
-  
-  void Update() 
-  { 
-    // überprüfung ob Santas Healthpoints auf 0 gesunken sind -> = 0 sollte reichen/funktionieren doch sicher ist sicher
-    if (SantasHealthPoints <= 0) 
-    { 
-      Debug.Log("Weihnachten ist vorbei!");
-      return;
-    }
-
-    FlyingMovement(); 
-    CheckInventory(); 
-  } 
   
   void FlyingMovement()
   {
@@ -87,6 +67,7 @@ public class XMasGame_Refaktorisiert : MonoBehaviour
   { 
     // Healthpoints werden entsprechend Schaden abgezogen
     SantasHealthPoints -= damage;
+
     // überprüfung ob Healthpoints unter 0 gesunken sind -> dann auf 0 gesetzt
     if (SantasHealthPoints < 0) 
     { 
@@ -114,4 +95,24 @@ public class XMasGame_Refaktorisiert : MonoBehaviour
   { 
     isFlying = false; 
   }
+
+  void Start() 
+  { 
+    Debug.Log("Weihnachtsabenteuer beginnt!");
+    SantaGameObject = GameObject.Find("Santa"); // evtl. überflüssig da SantaGameObject anscheinend nicht gebraucht wird
+    SantasHealthPoints = 80; // !mir ist unklar, warum die Healthpoints überschrieben werden!
+  }
+
+  void Update() 
+  { 
+    // überprüfung ob Santas Healthpoints auf 0 gesunken sind -> = 0 sollte reichen/funktionieren doch sicher ist sicher
+    if (SantasHealthPoints <= 0) 
+    { 
+      Debug.Log("Weihnachten ist vorbei!");
+      return;
+    }
+
+    FlyingMovement(); 
+    CheckInventory(); 
+  } 
 }

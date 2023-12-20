@@ -16,17 +16,92 @@ public class WinterSportsGame_Refaktorisiert : MonoBehaviour
     - Nach Abschluss ALLER Refaktorisierungen laden Sie oli90martin@web.de als Collaborator zu Ihrer Git-Repository ein.
     */
 
-    public int playerStamina = 100; public GameObject ski; public List<string> Achievements = new List<string>(); private bool isSkiing; public float speed = 10f;
-    void Start() { playerStamina = 100; Debug.Log("WinterSports beginnt!"); }
-    void Update() { if (playerStamina > 0) { CheckSkiing(); CheckAchievements(); } else { Debug.Log("Spiel beendet!"); } }
-    void CheckSkiing()
-    { if (isSkiing) { var move = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical")); ski.transform.Translate(move * speed * Time.deltaTime); } else { Debug.Log("Spieler kann nicht Ski fahren!"); } }
-    void CheckAchievements()
+    public List<string> AchievementsListe = new(); 
+    public GameObject SkiGameObject; 
+    public int PlayerStamina = 100; 
+    public float SkiingSpeed = 10f;
+    
+    private bool isSkiing; 
+    
+    private void CheckSkiing()
     {
-        if (Achievements.Count == 0) { Debug.Log("Keine Erfolge erzielt."); } else { foreach (var achievement in Achievements) { Debug.Log("Erfolg: " + achievement); } }
+        // überprüfung ob gerade Ski gefahren wird
+        if (!isSkiing) 
+        { 
+            Debug.Log("Spieler kann nicht Ski fahren!");
+            return;
+        } 
+
+        // Skifahren Steuerung
+        var move = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical")); 
+        SkiGameObject.transform.Translate(move * SkiingSpeed * Time.deltaTime);
     }
-    public void LoseStamina(int amount) { playerStamina -= amount; if (playerStamina < 0) { playerStamina = 0; } }
-    public void AddAchievement(string achievement) { if (!Achievements.Contains(achievement)) { Achievements.Add(achievement); } }
-    public void StartSkiing() { isSkiing = true; }
-    public void StopSkiing() { isSkiing = false; }
+
+    private void CheckAchievements()
+    {
+        // überprüfung ob Achievements erlangt wurden
+        if (AchievementsListe.Count <= 0) 
+        { 
+            Debug.Log("Keine Erfolge erzielt.");
+            return;
+        }
+
+        // Auflistung aller "achievements" / Elemente aus Liste in Konsole
+        foreach (var achievement in AchievementsListe) 
+        { 
+            Debug.Log("Erfolg: " + achievement); 
+        } 
+    }
+
+    // fpr LoseStamina kein offensichtlicher Grund im Code warum public
+    public void LoseStamina(int losingAmount) 
+    { 
+        // Stamina wird entsprechend loosingAmount abgezogen
+        PlayerStamina -= losingAmount; 
+        
+        // überprüfung ob Stamina unter 0 gesunken ist -> dann auf 0 gesetzt
+        if (PlayerStamina <= 0) 
+        { 
+            PlayerStamina = 0; 
+        } 
+    }
+    
+    // AddAchievement derzeit nicht offensichtlich im Code gebraucht -> kann gelöscht werden
+    public void AddAchievement(string achievement) 
+    { 
+        if (!AchievementsListe.Contains(achievement)) 
+        { 
+            AchievementsListe.Add(achievement); 
+        } 
+    }
+
+    // StartSkiing derzeit nicht offensichtlich im Code gebraucht -> kann gelöscht werden
+    public void StartSkiing() 
+    { 
+        isSkiing = true; 
+    }
+    
+    // StopSkiing derzeit nicht offensichtlich im Code gebraucht -> kann gelöscht werden
+    public void StopSkiing() 
+    { 
+        isSkiing = false; 
+    }
+
+    void Start() 
+    { 
+        Debug.Log("WinterSports beginnt!"); 
+        PlayerStamina = 100; // !mir ist unklar, warum die PlayerStamina überschrieben wird!
+    }
+    
+    void Update() 
+    { 
+        // überprüfung ob Spieler noch Stamina hat
+        if (PlayerStamina <= 0) 
+        { 
+            Debug.Log("Spiel beendet!"); 
+        } 
+        
+        CheckSkiing(); 
+        CheckAchievements(); 
+    }
 }
