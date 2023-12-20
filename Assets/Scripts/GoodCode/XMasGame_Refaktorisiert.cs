@@ -33,7 +33,7 @@ public class XMasGame_Refaktorisiert : MonoBehaviour
   private bool isFlying; // evtl. überflüssig da Start-/ StopFlying nicht offensichtlich im Code gebraucht
   private float flyingSpeed = 10f; 
   
-  void FlyingMovement()
+  private void FlyingMovement()
   {
     // überprüfung ob Santa gerade fliegt/ fliegen kann
     if (!isFlying)
@@ -47,7 +47,7 @@ public class XMasGame_Refaktorisiert : MonoBehaviour
     SleightGameObject.transform.Translate(move * flyingSpeed * Time.deltaTime);
   }
 
-  void CheckInventory()
+  private void CheckInventory()
   {
     // überprüfung ob überhaupt Elemente in Liste sind 
     if (InventoryGiftsList.Count <= 0) 
